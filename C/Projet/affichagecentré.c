@@ -1,4 +1,4 @@
-//permet l'utilisation de certaines fonctions déjà définies sur windows comme GetConsolScreenBufferInfo
+
 #ifdef _WIN32
 #include <windows.h>
 //si le programme n'est pas compilé sur windows on passe sur Unix
@@ -34,17 +34,18 @@ void affichageCentre(const char *text) {
     //mettre des espaces avant le texte pour le centrer
     if (espacement_a_gauche > 0) {
         for (int i = 0; i < espacement_a_gauche; i++) {
-            putchar(' ');
+            putchar(' '); // Ajout d'un espace pour le centrage
         }
     }
-    printf("%s\n", text);
+    printf("%s\n", text); // Modification : utilisation de printf sans '\n' car la nouvelle ligne sera gérée en dehors
 }
 
-int main() {
-    printf("\n\n\n\n\n\n\n\n\n\n");
-    affichageCentre("========================================================================================================================");
-    affichageCentre("BIENVENUE DANS LE JEU DU QUORRIDOR");
-    affichageCentre("========================================================================================================================");
-    system("pause");
+int ouverture(void) {
+    clear(10);
+    affichageCentre("=====================================================================================================================");
+    affichageCentre("BIENVENUE DANS LE JEU DU QUORRIDOR !");
+    affichageCentre("=====================================================================================================================");
+
+    getchar(); // Ajout d'une pause pour les utilisateurs Windows
     return 0;
 }
