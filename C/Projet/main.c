@@ -13,6 +13,66 @@ void color(int t,int f){
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H,f*16+t);
 }
+
+void clear(int n) {
+    for(int i=0;i<n;i++)
+        printf("\n");
+}
+//#=========================================================#
+//PAUL
+
+#ifdef _WIN32
+#include <windows.h>
+//si le programme n'est pas compilé sur windows on passe sur Unix
+#else
+//autorisation aux systèmes Unix d'intéragir avec le terminal
+#include <sys/ioctl.h>
+//fonctionnalités système Unix
+#include <unistd.h>
+#endif
+
+
+int largeurConsole() {
+    int largeur = 80; //largeur par défaut si impossible de determiner la taille
+#ifdef _WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi; //récupération largeur console spécifique à windows
+    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) { //information sur la console active
+        largeur = csbi.srWindow.Right - csbi.srWindow.Left + 1; //calcul de la largeur de la console à partir des coordonnées du rectangle visible
+    }
+#else
+    struct winsize w; //récupération largeur console spécifique à Unix
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) { //dimensions du terminal
+        largeur = w.ws_col; //stocke la largeur du terminal
+    }
+#endif
+    return largeur;
+}
+
+void affichageCentre(const char *text) {
+    int largeur_de_la_console = largeurConsole();
+    int taille_du_texte = strlen(text);
+    int espacement_a_gauche = (largeur_de_la_console - taille_du_texte) / 2;
+
+    //mettre des espaces avant le texte pour le centrer
+    if (espacement_a_gauche > 0) {
+        for (int i = 0; i < espacement_a_gauche; i++) {
+            putchar(' '); // Ajout d'un espace pour le centrage
+        }
+    }
+    printf("%s\n", text); // Modification : utilisation de printf sans '\n' car la nouvelle ligne sera gérée en dehors
+}
+
+int ouverture(void) {
+    clear(10);
+    affichageCentre("=====================================================================================================================");
+    affichageCentre("BIENVENUE DANS LE JEU DU QUORRIDOR !");
+    affichageCentre("=====================================================================================================================");
+
+    getchar(); // Ajout d'une pause pour les utilisateurs Windows
+    return 0;
+}
+
+
 //#=========================================================#
 //RAPHAEL
 int blind(char pseudo[TAILLE_PSEUDO]) {
@@ -51,31 +111,20 @@ int check_win( int coo[8], int player_i){ //Fonctionne uniquement si le mouvemen
     }
 
 //#=========================================================#
-//PAUL
-
-void ouverture() {
-    printf("==========================================================================================================\n");
-    printf("                                   BIENVENUE DANS LE JEU DU QUORRIDOR !\n");
-    printf("==========================================================================================================\n");
-}
-
-//#=========================================================#
-
-void clear(int n) {
-    for(int i=0;i<n;i++)
-        printf("\n");
-}
 
 int fct_nbjoueur (int nbjoueur) {
+    clear(40);
     do {
-        printf("Entrez le nombre de joueurs au total: ( 2 ou 4 )\n==> ");
+        printf("Entrez le nombre de joueurs au total: ( 2 ou 4 )\n ==> ");
         scanf("%d", &nbjoueur);
         if (nbjoueur < 2 || nbjoueur > 4 || nbjoueur == 3) {
+            clear(40);
             color(4,0);
             printf("Veuillez saisir un nombre de joueur valide.\n");
             color(7, 0);
         }
         else {
+            clear(40);
             color(2,0);
             printf("Nombre de joueur valide, initialisation de la partie...\n");
             color(7, 0);
@@ -375,8 +424,6 @@ void init(int tab[TAILLE][TAILLE],int coord[4][2],int mode[4],int nbplayers){
 
 void customizeGame(int *nbplayers, int pseudos[5][50], int nbjoueur) {
 
-    ouverture();
-
     *nbplayers = fct_nbjoueur(nbjoueur);
 
     for (int i = 0; i < *nbplayers; i++) {
@@ -399,6 +446,7 @@ int main(void) {
     char pseudos[5][50];
     int nbjoueur;
 
+    ouverture();
 
     customizeGame(&nbplayers,pseudos,nbjoueur);
 
