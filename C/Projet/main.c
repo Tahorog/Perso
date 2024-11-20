@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define COTE 11
 #define TAILLE (COTE+COTE-1)
@@ -22,56 +23,111 @@ void clear(int n) {
 //PAUL
 
 #ifdef _WIN32
-#include <windows.h>
-//si le programme n'est pas compilé sur windows on passe sur Unix
 #else
-//autorisation aux systèmes Unix d'intéragir avec le terminal
-#include <sys/ioctl.h>
-//fonctionnalités système Unix
-#include <unistd.h>
+#include <sys/ioctl.h>  // Si le programme est compilé sous Unix
+#include <unistd.h>      // Si le programme est compilé sous Unix
 #endif
 
 
+// Fonction pour récupérer la largeur de la console
 int largeurConsole() {
-    int largeur = 80; //largeur par défaut si impossible de determiner la taille
+    int largeur = 80; // Largeur par défaut si impossible de déterminer la taille
 #ifdef _WIN32
-    CONSOLE_SCREEN_BUFFER_INFO csbi; //récupération largeur console spécifique à windows
-    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) { //information sur la console active
-        largeur = csbi.srWindow.Right - csbi.srWindow.Left + 1; //calcul de la largeur de la console à partir des coordonnées du rectangle visible
+    CONSOLE_SCREEN_BUFFER_INFO csbi; // Récupération largeur console spécifique à Windows
+    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
+        largeur = csbi.srWindow.Right - csbi.srWindow.Left + 1; // Calcul de la largeur de la console
     }
 #else
-    struct winsize w; //récupération largeur console spécifique à Unix
-    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) { //dimensions du terminal
-        largeur = w.ws_col; //stocke la largeur du terminal
+    struct winsize w; // Récupération largeur console spécifique à Unix
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        largeur = w.ws_col; // Stocke la largeur du terminal
     }
 #endif
     return largeur;
 }
 
+// Fonction pour récupérer la hauteur de la console
+int hauteurConsole() {
+    int hauteur = 25; // Hauteur par défaut si impossible de déterminer la taille
+#ifdef _WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi; // Récupération hauteur console spécifique à Windows
+    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
+        hauteur = csbi.srWindow.Bottom - csbi.srWindow.Top + 1; // Calcul de la hauteur de la console
+    }
+#else
+    struct winsize w; // Récupération hauteur console spécifique à Unix
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        hauteur = w.ws_row; // Stocke la hauteur du terminal
+    }
+#endif
+    return hauteur;
+}
+
+// Fonction pour afficher un texte centré dans la console
 void affichageCentre(const char *text) {
     int largeur_de_la_console = largeurConsole();
     int taille_du_texte = strlen(text);
     int espacement_a_gauche = (largeur_de_la_console - taille_du_texte) / 2;
 
-    //mettre des espaces avant le texte pour le centrer
+    // Mettre des espaces avant le texte pour le centrer
     if (espacement_a_gauche > 0) {
         for (int i = 0; i < espacement_a_gauche; i++) {
             putchar(' '); // Ajout d'un espace pour le centrage
         }
     }
-    printf("%s\n", text); // Modification : utilisation de printf sans '\n' car la nouvelle ligne sera gérée en dehors
+    printf("%s\n", text);
 }
 
+// Fonction pour centrer le texte verticalement et horizontalement
+void affichageCentreTotal(const char *text) {
+    int hauteur_de_la_console = hauteurConsole();
+    int taille_du_texte = 1; // Le texte occupe au moins une ligne
+
+    // Calculer l'espace nécessaire pour centrer verticalement
+    int espacement_haut = (hauteur_de_la_console - taille_du_texte) / 2;
+
+    // Ajouter des sauts de ligne pour centrer verticalement
+    for (int i = 0; i < espacement_haut; i++) {
+        printf("\n");
+    }
+
+    // Centrer horizontalement le texte
+    affichageCentre(text);
+}
+
+// Fonction d'ouverture du jeu avec le titre et le menu centré
 int ouverture(void) {
-    clear(10);
-    affichageCentre("=====================================================================================================================");
+    clear(10);  // Nettoyage de l'écran avec votre fonction existante
+
+    // Affichage de la ligne décorative avant le texte centré
+    int largeur_de_la_console = largeurConsole();
+    for (int i = 0; i < largeur_de_la_console; i++) {
+        putchar('=');  // Affichage de la ligne décorative
+    }
+    printf("\n");
+
+    // Centrer le message "Bienvenue" sans affecter la ligne décorative
     affichageCentre("BIENVENUE DANS LE JEU DU QUORRIDOR !");
-    affichageCentre("=====================================================================================================================");
+
+    // Affichage de la ligne décorative après le texte centré
+    for (int i = 0; i < largeur_de_la_console; i++) {
+        putchar('=');  // Affichage de la ligne décorative
+    }
+    printf("\n");
+
 
     getchar(); // Ajout d'une pause pour les utilisateurs Windows
+
+    clear(30); // Nettoie l'écran avant d'afficher le menu
+    affichageCentreTotal("---Menu de Jeu---");
+    affichageCentre("1) Jouer");
+    affichageCentre("2) Charger");
+    affichageCentre("3) Quitter");
+    affichageCentre("4) Parametres");
+    clear(12);
+    getchar(); // Attente d'une entrée pour la sélection du menu
     return 0;
 }
-
 
 //#=========================================================#
 //RAPHAEL
@@ -88,22 +144,25 @@ int blind(char pseudo[TAILLE_PSEUDO]) {
 }
 
 
- void saisiePseudo(int n, char pseudo[TAILLE_PSEUDO]) {
+void saisiePseudo(int n, char pseudo[TAILLE_PSEUDO + 1]) {
+    do {
+        printf("Player [%d]\nEntrez votre pseudo (de 1 a %d caracteres) : ", n, TAILLE_PSEUDO-1);
+        scanf("%s", pseudo);
 
-     do {
-         do {
-             printf("Player [%d]\nEntrez votre pseudo (de 1 a 15 caracteres) : ", n);
-             scanf("%s", pseudo);
-             if (strlen(pseudo) > TAILLE_PSEUDO) {
-                 color(4,0);
-                 printf("Il faut choisir un pseudo qui respecte les regles annoncees.\n");
-                 color(7,0);
-             }
-         } while (strlen(pseudo) > TAILLE_PSEUDO);
+        if (strlen(pseudo) > TAILLE_PSEUDO) {
+            color(4, 0);
+            printf("Il faut choisir un pseudo qui respecte les regles annoncees.\n");
+            color(7, 0);
+        }
 
-         fflush(stdin);
-     }while(blind(pseudo));
- }
+        if (blind(pseudo)) {
+            color(4, 0);
+            printf("Le pseudo contient des caracteres invalides.\n");
+            color(7, 0);
+        }
+
+    } while (strlen(pseudo) > TAILLE_PSEUDO || blind(pseudo));
+}
 
 
 int check_win( int coo[8], int player_i){ //Fonctionne uniquement si le mouvement du joueur est blindé (par ex, joueur 2 ne peut aller en abscisse 0 et 20)
@@ -403,38 +462,75 @@ void initPlayer(int tab[TAILLE][TAILLE], int coord[4][2],int x,int y,int player_
     coord[player_n-1][1]=y;
 }
 
-void initBoard(int tab[TAILLE][TAILLE],int coord[4][2],int nbplayers) { // initialise le plateau (4 joueurs-> a modif /nbjoueur)
+void initBoard(int tab[TAILLE][TAILLE],int coord[4][2],int nbPlayers) { // initialise le plateau (4 joueurs-> a modif /nbjoueur)
     initPlayer(tab,coord,5,9,1); // J1
     initPlayer(tab,coord,5,1,3); // J3
-    if (nbplayers==4) {
+    if (nbPlayers==4) {
         initPlayer(tab,coord,1,5,2); // J2
         initPlayer(tab,coord,9,5,4); // J4
     }
 }
 
 
-void init(int tab[TAILLE][TAILLE],int coord[4][2],int mode[4],int nbplayers){
-    initBoard(tab,coord,nbplayers);
+void init(int tab[TAILLE][TAILLE],int coord[4][2],int mode[4],int nbPlayers){
+    initBoard(tab,coord,nbPlayers);
     for(int i=0;i<4;i++) // initialise le mode de chaqun des joueurs
-        if (!(nbplayers==2 && i%2==1))//skip le tour des joueurs i = 1 et i = 3 si le nb de joueurs == 4
+        if (!(nbPlayers==2 && i%2==1))//skip le tour des joueurs i = 1 et i = 3 si le nb de joueurs == 4
             mode[i]=1;
 
 }
 
 
-void customizeGame(int *nbplayers, int pseudos[5][50], int nbjoueur) {
-
+void customizeGame(int *nbplayers, char pseudos[5][TAILLE_PSEUDO + 1], int nbjoueur) {
     *nbplayers = fct_nbjoueur(nbjoueur);
+    getchar();
 
     for (int i = 0; i < *nbplayers; i++) {
-        saisiePseudo(i + 1, pseudos[i]);
+        char pseudo[TAILLE_PSEUDO + 1];
+        saisiePseudo(i + 1, pseudo);
+        strncpy(pseudos[i], pseudo, TAILLE_PSEUDO);
+        pseudos[i][TAILLE_PSEUDO] = '\0'; // Assurez-vous que la chaîne est terminée.
     }
-    /* AFFICHER TOUS LES PSEUDOS
-    for (int i = 0; i < 4; i++) {
-        printf("Pseudo[%d]: %s\n", i + 1, pseudos[i]);
-    }
-    */
 }
+
+void menu(int *nbplayers, int pseudos[5][50], int nbjoueur, int tab[TAILLE][TAILLE], int coord[4][2], int mode[4]) {
+    char input[10]; // Tampon pour lire l'entrée utilisateur
+    int choix;
+
+    printf("Veuillez SVP entrer votre choix (1-4) : ");
+   /* if (fgets(input, sizeof(input), stdin) == NULL) {
+        printf("Erreur 1.\n");
+        return;
+    }*/
+    scanf( "%d", &choix);
+
+    if ( choix!= 1) {
+        printf("Erreur 2.\n");
+        return;
+    }
+
+
+    switch (choix) {
+        case 1:
+            customizeGame(nbplayers, pseudos, nbjoueur);
+            init(tab, coord, mode, *nbplayers);
+            break;
+        case 2:
+            printf("Cette fonction n'a pas encore été implementee.\n");
+            break;
+        case 3:
+            printf("Sortie du menu.\n");
+            return;
+        case 4:
+            printf("Cette fonction n'a pas encore été implementee.\n");
+            break;
+        default:
+            printf("Erreur.\n");
+            break;
+    }
+    fflush(stdin);
+}
+
 
 
 int main(void) {
@@ -443,15 +539,13 @@ int main(void) {
     int coord[4][2]={{0}};
     int mode[4];
     int nbplayers;
-    char pseudos[5][50];
-    int nbjoueur;
+    char pseudos[5][TAILLE_PSEUDO];
 
     ouverture();
 
-    customizeGame(&nbplayers,pseudos,nbjoueur);
 
+    menu(&nbplayers, pseudos, 5, tab, coord, mode); //appel de la fonction menu() jusqu'à qu'elle commence
 
-    init(tab,coord,mode,nbplayers);
 
     int beginner=rand()%4;
     while (1) {
@@ -464,6 +558,3 @@ int main(void) {
 
     return 0;
 }
-
-
-// A FAIRE : modifier argument tableaux des fonction (tab)
