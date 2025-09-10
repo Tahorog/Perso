@@ -1,4 +1,8 @@
-# Banque de code en C
+# Projets Informatiques
+## Java
+- Exercices entrainements
 
-## projet de quorridor
-## exercices apprentissage C
+## C
+- Exercices entrainements
+- Projet de création du jeu Corridor réalisé avec une interface graphique Allegro
+- Projet de création du jeu Dofus Arena réalisé principalement avec Allegro
