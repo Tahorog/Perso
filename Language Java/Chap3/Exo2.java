@@ -76,7 +76,7 @@ public class Exo2 {
 
         System.out.println("----------------------------------------");
 
-        if (a == b) {
+        if (a.equals(b)) {
             System.out.println("a et b sont le même objet.");
         } else {
             System.out.println("a et b sont des objets différents.");
