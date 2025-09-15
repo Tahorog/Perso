@@ -12,8 +12,8 @@ public class Passager extends Personne {
     }
 
     public void afficher(){
-        System.out.println("Nom: " + this.nom);
-        System.out.println("Reservation: " + this.reservation);
-        System.out.println("Train: " + this.train);
+        System.out.println("Nom: " + nom);
+        System.out.println("Reservation: " + reservation);
+        System.out.println("Train: " + train.numero);
     }
 }

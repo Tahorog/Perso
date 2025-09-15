@@ -8,6 +8,6 @@ public class Personne {
     }
 
     public void afficher(){
-        System.out.println("Nom: " + this.nom);
+        System.out.println("Nom: " + nom);
     }
 }
