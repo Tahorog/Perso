@@ -39,7 +39,7 @@ public class Exo8 {
 
         public void Dernier() {
             if (tab.isEmpty()) {
-                System.out.println("Erreur : la liste est vide.");
+                System.out.println("Erreur.");
                 position = -1;
             } else {
                 position = tab.size() - 1;

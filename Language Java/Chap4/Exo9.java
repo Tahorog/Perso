@@ -49,7 +49,7 @@ public class Exo9 {
         if (mapEtu.etudiants.containsKey(numRecherche)) {
             System.out.println("Nom de l'étudiant : " + mapEtu.etudiants.get(numRecherche));
         } else {
-            System.out.println("Aucun étudiant trouvé avec ce numéro.");
+            System.out.println("Erreur.");
         }
 
         System.out.println("----- Liste complète des étudiants -----");

@@ -44,7 +44,7 @@ public class Exo6 {
 
         public void afficherInfos() {
             super.afficherInfos();
-            System.out.println("Profession libérale: " + profession);
+            System.out.println("Profession : " + profession);
         }
     }
 

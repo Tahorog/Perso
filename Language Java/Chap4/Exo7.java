@@ -9,7 +9,7 @@ public class Exo7 {
 
         public void saisir() {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Entrez l'année de fabrication de la voiture : ");
+            System.out.print("Entrez l'année de fabrication : ");
             anneeFabrication = sc.nextInt();
         }
 
@@ -36,7 +36,7 @@ public class Exo7 {
                 v.proprietaire = this;
                 compteur++;
             } else {
-                System.out.println("Le propriétaire a déjà le nombre maximum de voitures.");
+                System.out.println("Le propriétaire a déjà le nombre maximum.");
             }
         }
 
@@ -63,7 +63,7 @@ public class Exo7 {
                 v.modele = this;
                 compteur++;
             } else {
-                System.out.println("Ce modèle a déjà le nombre maximum de voitures.");
+                System.out.println("Ce modèle a déjà le nombre maximum.");
             }
         }
 
@@ -79,7 +79,7 @@ public class Exo7 {
         String nom = sc.nextLine();
         int nbVoituresProprio;
         do {
-            System.out.print("Entrez le nombre de voitures du propriétaire (>=0) : ");
+            System.out.print("Entrez le nombre de voitures : ");
             nbVoituresProprio = sc.nextInt();
         } while (nbVoituresProprio < 0);
 
@@ -87,11 +87,11 @@ public class Exo7 {
         proprietaire.afficher();
 
         sc.nextLine();
-        System.out.print("Entrez la marque du modèle : ");
+        System.out.print("Entrez la marque : ");
         String marque = sc.nextLine();
         int nbVoituresModele;
         do {
-            System.out.print("Entrez le nombre de voitures du modèle (>=0) : ");
+            System.out.print("Entrez le nombre de voitures : ");
             nbVoituresModele = sc.nextInt();
         } while (nbVoituresModele < 0);
 

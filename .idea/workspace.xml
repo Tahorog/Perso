@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02656125-a225-415b-b8c3-4f2fba0fd13b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo7.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo9.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perso.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Perso.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo5$Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo5$Segment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo6$Arbre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo7$Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo6.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo7.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo8.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo9.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo9.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
