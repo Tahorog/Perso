@@ -3,10 +3,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Language Java/Chap3" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/Language C" />
+      <sourceFolder url="file://$MODULE_DIR$/Language Java/Chap4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Language Java/Chap1" />
       <excludeFolder url="file://$MODULE_DIR$/Language Java/Chap2" />
+      <excludeFolder url="file://$MODULE_DIR$/Language Java/Chap3" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
