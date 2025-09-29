@@ -3,27 +3,22 @@ import java.util.ArrayList;
 public class Exo8 {
     static class Pile {
         private Liste liste;
-
         public Pile(Liste liste) {
             this.liste = liste;
         }
-
         public Object depiler() {
             liste.Dernier();
             Object obj = liste.Supprimer();
             return obj;
         }
-
         public void empiler(Object obj) {
             liste.Dernier();
             liste.Ajouter(obj);
         }
-
         public void afficherPile() {
             liste.afficher();
         }
     }
-
     static class Liste {
         private ArrayList<Object> tab;
         private int position;
@@ -32,11 +27,9 @@ public class Exo8 {
             this.tab = new ArrayList<>();
             this.position = -1;
         }
-
         public void Premier() {
             this.position = 0;
         }
-
         public void Dernier() {
             if (tab.isEmpty()) {
                 System.out.println("Erreur.");
@@ -45,7 +38,6 @@ public class Exo8 {
                 position = tab.size() - 1;
             }
         }
-
         public Object Suivant() {
             if (tab.isEmpty()) {
                 return null;
@@ -56,7 +48,6 @@ public class Exo8 {
             position++;
             return tab.get(position);
         }
-
         public Object Supprimer() {
             if (tab.isEmpty() || position == -1) {
                 return null;
@@ -65,7 +56,6 @@ public class Exo8 {
             position--;
             return obj;
         }
-
         public void Ajouter(Object obj) {
             if (position == -1 || position >= tab.size()) {
                 tab.add(obj);
@@ -75,7 +65,6 @@ public class Exo8 {
                 position++;
             }
         }
-
         public void afficher() {
             if (tab.isEmpty()) {
                 System.out.println("Liste vide.");
@@ -86,7 +75,6 @@ public class Exo8 {
             }
         }
     }
-
     static class Livre {
         private int isbn;
         private String titre;
@@ -100,7 +88,6 @@ public class Exo8 {
             return "Livre{isbn=" + isbn + ", titre='" + titre + "'}";
         }
     }
-
     public static void main(String[] args) {
         Livre l1 = new Livre(1, "L'apprenti assassin");
         Livre l2 = new Livre(2, "L’assassin du roi");

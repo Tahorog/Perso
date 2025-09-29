@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02656125-a225-415b-b8c3-4f2fba0fd13b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo6.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Language Java/Chap5/Exo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Language Java/Chap5/Exo2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Language Java/Chap5/Exo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo7.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo8.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo8.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Language Java/Chap4/Exo9.java" beforeDir="false" afterPath="$PROJECT_DIR$/Language Java/Chap4/Exo9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perso.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Perso.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,18 +38,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Exo3.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tahorog/Documents/GitHub/Perso/Language Java/Chap4&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Exo1.executor": "Run",
+    "Application.Exo2.executor": "Run",
+    "Application.Exo3.executor": "Run",
+    "Application.Exo9.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Tahorog/Documents/GitHub/Perso/Language Java/Chap4",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tahorog\Documents\GitHub\Perso\Language Java\Chap4" />
@@ -67,5 +74,16 @@
       <updated>1758444980182</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
