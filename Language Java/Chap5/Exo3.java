@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Exo3 {
 
-    public static class Personne implements Serializable {
+    static class Personne implements Serializable {
         public String nom;
         public int age;
 
@@ -29,7 +29,7 @@ public class Exo3 {
         }
     }
 
-    public static class Etudiant extends Personne {
+    static class Etudiant extends Personne {
         private String matricule;
 
         public Etudiant(String nom, int age, String matricule) {
@@ -37,14 +37,13 @@ public class Exo3 {
             this.matricule = matricule;
         }
 
-        @Override
         public void afficher() {
             super.afficher();
             System.out.println("Matricule: " + matricule);
         }
     }
 
-    public static class MapEtudiants {
+    static class MapEtudiants {
         private Map<String, Etudiant> etudiants = new HashMap<>();
 
         public void ajouterEtudiant(Etudiant e) {
@@ -65,7 +64,7 @@ public class Exo3 {
             p1.serialiser("personne.ser");
             System.out.println("Objet Personne sérialisé !");
         } catch (IOException e) {
-            System.err.println("Erreur lors de la sérialisation: " + e.getMessage());
+            System.err.println("Erreur : " + e.getMessage());
         }
 
         Personne p2 = null;
@@ -73,14 +72,14 @@ public class Exo3 {
             p2 = Personne.deserialiser("personne.ser");
             System.out.println("Objet Personne désérialisé !");
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Erreur lors de la désérialisation: " + e.getMessage());
+            System.err.println("Erreur : " + e.getMessage());
         }
 
         if (p2 != null) {
             p2.afficher();
         }
 
-        Etudiant etu = new Etudiant("Bob", 22, "E123");
+        Etudiant etu = new Etudiant("Patrice", 22, "2265");
         etu.afficher();
 
         MapEtudiants map = new MapEtudiants();
