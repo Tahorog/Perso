@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02656125-a225-415b-b8c3-4f2fba0fd13b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Language Java/Chap6/Exo7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Perso.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Perso.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo1$DivisionParZero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Perso/Exo1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo2$Fichier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Perso/Exo2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Perso/Exo2.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +38,7 @@
     &quot;Application.Exo2.executor&quot;: &quot;Run&quot;,
     &quot;Application.Exo3.executor&quot;: &quot;Run&quot;,
     &quot;Application.Exo5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Exo7.executor&quot;: &quot;Run&quot;,
     &quot;Application.Exo9.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
